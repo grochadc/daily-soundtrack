@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-
+import Loading  from './Loading';
 
 export default class Player extends Component {
   constructor(){
@@ -12,12 +11,19 @@ export default class Player extends Component {
   }
   componentDidMount(){
     let that = this;
-    axios.get('https://www.jsonstore.io/6b454a4b29261d56435c6854b86cfefa5c7089e6194cda7b19d580bda7c427e2/users/medicengonzo/tracks/'+this.props.match.params.track)
+    let query = {
+      _id: this.props.id
+    }
+    axios.get('http://localhost:3030/api/v1/Track?query='+JSON.stringify(query),{
+      headers: {
+        'Content-type': 'application-json'
+      }
+    })
     .then(function (response) {
-      let { result } = response.data
-      let track = result.substr(result.lastIndexOf(':')+1);
-      that.setState({track: result});
-      console.log(result);
+      let { uri } = response.data[0]
+
+      let track = uri.substr(uri.lastIndexOf(':')+1);
+      that.setState({track: track});
     })
     .catch(function (error) {
       console.log(error);
@@ -27,8 +33,9 @@ export default class Player extends Component {
     let URL = 'https://open.spotify.com/embed/track/'+this.state.track;
     return(
       <div className='player'>
-        <Link to={'/playlist/'+(this.props.match.params.track-1)}>Prev</Link><br />
-        <iframe src={URL} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" title='currentTrack'></iframe>
+        {this.state.track===null ?
+          <Loading /> :
+          <div align="center"><iframe src={URL} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" title='currentTrack'></iframe></div>}
       </div>
     )
   }
