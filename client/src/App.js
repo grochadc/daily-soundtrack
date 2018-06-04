@@ -4,19 +4,6 @@ import Playlist from './components/Playlist'
 import { Router } from '@reach/router';
 
 class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      trackID: '5b1081978d95a67d22cee5fe'
-    }
-    this.setTrackID = this.setTrackID.bind(this);
-  }
-
-  setTrackID(id){
-    this.setState({
-      trackID: id
-    })
-  }
 
   render() {
     return (
