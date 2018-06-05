@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loading from './Loading';
 import TrackLink from './TrackLink';
 import axios from 'axios';
+import { Row, Grid } from 'react-bootstrap';
 
 class Playlist extends Component {
   constructor(){
@@ -28,14 +29,14 @@ class Playlist extends Component {
   }
   render(){
     return(
-      <div>
-      <ul>
-      {this.state.tracks===null ?
-        <Loading />:
-        this.state.tracks.map((track, i) => <li key={i}><TrackLink id={track._id} info={track.track_info}/></li>)
-      }
-      </ul>
-      </div>
+      <Grid>
+        <Row>
+        {this.state.tracks===null ?
+          <Loading />:
+          this.state.tracks.map((track, i) => <TrackLink id={track._id} info={track.track_info} timestamp={track.date} key={i} />)
+        }
+      </Row>
+      </Grid>
     )
   }
 }
