@@ -13,11 +13,11 @@ function TrackLink(props){
     let timeHours = (timeMinutes/60);
 
     if(timeSeconds < 60){
-      return parseInt(timeSeconds)+' seconds ago'
+      return parseInt(timeSeconds, 10)+' seconds ago'
     }else if(timeMinutes < 60){
-      return parseInt(timeMinutes)+' minutes ago';
+      return parseInt(timeMinutes, 10)+' minutes ago';
     } else if(timeHours < 24){
-      return parseInt(timeHours)+' hours ago';
+      return parseInt(timeHours, 10)+' hours ago';
     }
   }
   return(
