@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Player from './components/Player';
 import Playlist from './components/Playlist'
+import AddTrack from './components/AddTrack';
 import { Router } from '@reach/router';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
       <Router>
         <Playlist path='/' />
         <Player path='/player/:id' />
+        <AddTrack path='/add' />
       </Router>
       </div>
     );
