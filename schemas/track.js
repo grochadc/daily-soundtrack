@@ -6,7 +6,8 @@ const trackSchema = new Schema({
   track_info: {
     title: String,
     artist: String,
-    album: String
+    album: String,
+    art: String
   },
   uri: String,
   date: Date,
