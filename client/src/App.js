@@ -4,10 +4,11 @@ import Playlist from './components/Playlist'
 import AddTrack from './components/AddTrack';
 import { Router } from '@reach/router';
 import { Grid, Row, Col, Nav, NavItem } from 'react-bootstrap';
+import './index.css';
 
 function Sidebar(props){
   return (
-    <Nav bsStyle="pills" stacked>
+    <Nav bsStyle="pills" stacked className='fixed'>
       <NavItem href='/'>
         Home
       </NavItem>
@@ -17,6 +18,7 @@ function Sidebar(props){
     </Nav>
   )
 };
+
 
 class App extends Component {
 
