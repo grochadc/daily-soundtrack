@@ -11,7 +11,7 @@ class AddTrack extends Component {
       album: '',
       uri: '',
       art: '',
-      finished: false
+      showSubmit: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -75,7 +75,8 @@ class AddTrack extends Component {
         art,
         artist,
         title,
-        album
+        album,
+        showSubmit: true
       });
     }
     getToken();
@@ -90,7 +91,8 @@ class AddTrack extends Component {
           <label>Song: <input type="text" name="title" value={title} onChange={this.handleChange} /></label><br />
           <label>Album: <input type="text" name="album" value={album} onChange={this.handleChange} /></label><br />
           <label>URI: <input type="text" name="uri" value={uri} onChange={this.handleChange} /></label><br />
-          <button onClick={this.handleSubmit}>Submit</button><button onClick={this.handleShow}> Show </button><br />
+          <button onClick={this.handleShow}> Show </button><br />
+          { this.state.showSubmit ? <button onClick={this.handleSubmit}>Submit</button> : null}
         </Media.Body>
         <Media.Left>
           <img alt={'Album Art'} src={this.state.art} />
