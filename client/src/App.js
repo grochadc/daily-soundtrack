@@ -3,18 +3,39 @@ import Player from './components/Player';
 import Playlist from './components/Playlist'
 import AddTrack from './components/AddTrack';
 import { Router } from '@reach/router';
+import { Grid, Row, Col, Nav, NavItem } from 'react-bootstrap';
+
+function Sidebar(props){
+  return (
+    <Nav bsStyle="pills" stacked>
+      <NavItem href='/'>
+        Home
+      </NavItem>
+      <NavItem href='/add'>
+        Add Track
+      </NavItem>
+    </Nav>
+  )
+};
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      <Router>
-        <Playlist path='/' />
-        <Player path='/player/:id' />
-        <AddTrack path='/add' />
-      </Router>
-      </div>
+      <Grid>
+        <Row>
+          <Col xs={2}>
+            <Sidebar />
+          </Col>
+          <Col xs={8}>
+            <Router>
+              <Playlist path='/' />
+              <Player path='/player/:id' />
+              <AddTrack path='/add' />
+            </Router>
+          </Col>
+      </Row>
+      </Grid>
     );
   }
 }
