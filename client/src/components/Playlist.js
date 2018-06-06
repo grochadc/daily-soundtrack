@@ -13,7 +13,7 @@ class Playlist extends Component {
   }
   componentDidMount(){
     let that = this;
-    axios.get('http://localhost:3030/api/v1/Track',
+    axios.get('http://localhost:3030/api/v1/Track?sort={"date":-1}',
     {
       headers: {
         'Content-type': 'application/json'
