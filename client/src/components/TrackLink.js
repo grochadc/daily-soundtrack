@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import { Panel } from 'react-bootstrap';
+import { Panel, Media } from 'react-bootstrap';
 
 function TrackLink(props){
   let { info } = props
@@ -24,9 +24,13 @@ function TrackLink(props){
     <Link to={'/player/'+props.id} style={{ textDecoration: 'none'}}>
       <Panel>
         <Panel.Body>
-              <img alt={''} src={info.art} width="100" height="100"/><br />
-              {info.title}<br />
+          <Media>
+              <Media.Left><img alt={''} src={info.art} width="100" height="100"/></Media.Left>
+              <Media.Body>
+              <h3>{info.title}</h3>
               by {info.artist}
+            </Media.Body>
+          </Media>
         </Panel.Body>
         <Panel.Footer>
           Posted by: medicengonzo { calculateTimestamp(props.timestamp) }
