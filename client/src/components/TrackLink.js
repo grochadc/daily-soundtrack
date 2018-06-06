@@ -13,11 +13,14 @@ function TrackLink(props){
     let timeHours = (timeMinutes/60);
 
     if(timeSeconds < 60){
-      return parseInt(timeSeconds, 10)+' seconds ago'
+      let msg = timeSeconds>1 ? ' seconds ago' : ' second ago'
+      return parseInt(timeSeconds, 10)+msg;
     }else if(timeMinutes < 60){
-      return parseInt(timeMinutes, 10)+' minutes ago';
+      let msg = timeMinutes>1 ? ' minutess ago' : ' minute ago'
+      return parseInt(timeMinutes, 10)+msg;
     } else if(timeHours < 24){
-      return parseInt(timeHours, 10)+' hours ago';
+      let msg = timeSeconds>1 ? ' hours ago' : ' hour ago'
+      return parseInt(timeHours, 10)+msg;
     }
   }
   return(
@@ -33,7 +36,7 @@ function TrackLink(props){
           </Media>
         </Panel.Body>
         <Panel.Footer>
-          Posted by: medicengonzo { calculateTimestamp(props.timestamp) }
+          Posted by: medicengonzo <div className='small'>{ calculateTimestamp(props.timestamp) }</div>
         </Panel.Footer>
       </Panel>
     </Link>
