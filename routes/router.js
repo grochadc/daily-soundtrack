@@ -3,6 +3,8 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 const trackSchema = require('../schemas/track');
 const axios = require('axios');
+const queryString = require('query-string');
+const request = require('superagent');
 
 const trackModel = mongoose.model('Track', trackSchema );
 
@@ -35,6 +37,34 @@ router.get('/token', (req, res) => {
   })
   .then((response) => res.send(response.data))
   .catch((err) => res.send(err));
+});
+
+const redirect_uri = 'http://localhost:3030/callback';
+const client_id = process.env.CLIENT_ID;
+router.get('/login', (req, res) => {
+  var scopes = 'user-read-private user-read-email';
+  res.redirect('https://accounts.spotify.com/authorize' +
+    '?response_type=code' +
+    '&client_id=' + client_id +
+    (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+    '&redirect_uri=' + encodeURIComponent(redirect_uri));
+});
+
+router.get('/callback', (req, res) => {
+  let data = queryString.stringify({
+    grant_type: 'authorization_code',
+    code: req.query.code,
+    redirect_uri
+  });
+
+  request
+    .post('https://accounts.spotify.com/api/token')
+    .send(data)
+    .set('Authorization', 'Basic '+secret)
+    .end((err, response) => {
+      if(err) res.send(err);
+      else res.send(response.text)
+    })
 });
 
 module.exports = router;

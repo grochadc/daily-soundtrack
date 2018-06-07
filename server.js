@@ -1,6 +1,7 @@
 require('dotenv').config();
 const path = require('path');
-const app = require('express')();
+const express = require('express');
+const app = express();
 const router = require('./routes/router');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
