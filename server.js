@@ -10,7 +10,7 @@ const restify = require('express-restify-mongoose');
 
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(express.static(path.resolve(__dirname, 'client/build/')));
+//app.use(express.static(path.resolve(__dirname, 'client/build/')));
 
 mongoose.connect('mongodb://localhost/test');
 const trackSchema = require('./schemas/track');
