@@ -63,7 +63,7 @@ router.get('/callback', (req, res) => {
     .set('Authorization', 'Basic '+secret)
     .end((err, response) => {
       if(err) res.send(err);
-      else res.send(response.text)
+      else res.redirect('http://localhost:3000/success/'+response.text);
     })
 });
 
