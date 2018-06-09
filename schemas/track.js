@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
 
 const trackSchema = new Schema({
   track_info: {
@@ -11,7 +10,7 @@ const trackSchema = new Schema({
   },
   uri: String,
   date: Date,
-  owner: ObjectId
+  user: String
 })
 
 module.exports = trackSchema;
