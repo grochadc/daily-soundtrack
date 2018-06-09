@@ -8,10 +8,9 @@ class AuthSuccess extends Component {
       data: null,
     }
 
-    let tokens = JSON.parse(this.props.tokens);
-    this.props.sendTokens(tokens);
-    this.access_token = tokens.access_token;
-    this.refresh_token = tokens.refresh_token;
+    this.tokens = JSON.parse(this.props.tokens);
+    this.access_token = this.tokens.access_token;
+    this.refresh_token = this.tokens.refresh_token;
 
   }
 
@@ -23,7 +22,11 @@ class AuthSuccess extends Component {
       }
     })
       .then(response => {
-        console.log(response.data);
+        let sessionData = {
+          tokens: this.tokens,
+          user: response.data
+        }
+        this.props.sendSession(sessionData);
         this.setState({data: response.data})
       })
       .catch(err => console.log(err));
@@ -31,6 +34,7 @@ class AuthSuccess extends Component {
 
 
   render(){
+    console.log(this.state.data);
     return (
       <div>Welcome {this.state.data!=null ? this.state.data.display_name : 'User'}</div>
     )
