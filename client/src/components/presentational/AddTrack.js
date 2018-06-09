@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Media } from 'react-bootstrap';
+import { navigate } from '@reach/router';
 import axios from 'axios';
 
 class AddTrack extends Component {
@@ -11,6 +12,7 @@ class AddTrack extends Component {
       album: '',
       uri: '',
       art: '',
+      user: '',
       showSubmit: false
     }
     this.handleChange = this.handleChange.bind(this);
@@ -39,12 +41,13 @@ class AddTrack extends Component {
       },
       uri,
       date: new Date(),
+      user: this.props.user
     })
     .then((response) => {
       console.log(response);
       if(response.status===201){
         alert('Song submitted');
-        window.location.href = '/'; //Couldn't understand how to redirect using reach router
+        navigate('/');
       }
     })
     .catch((err) => console.log(err));
