@@ -3,11 +3,13 @@ import Player from './components/Player';
 import Playlist from './components/Playlist'
 import AddTrack from './components/AddTrack';
 import AuthSuccess from './components/AuthSuccess';
+import ConnectedProfile from './components/containers/ConnectedProfile';
 import { Router } from '@reach/router';
 import { Grid, Row, Col, Nav, NavItem, Navbar } from 'react-bootstrap';
 import './index.css';
 
 function Sidebar(props){
+  console.log(props.loggedIn);
   return (
     <Navbar fixedTop>
       <Navbar.Header>
@@ -19,9 +21,12 @@ function Sidebar(props){
       <NavItem href='/'>
         Home
       </NavItem>
-      <NavItem href='/add'>
-        Add Track
-      </NavItem>
+      { props.loggedIn ?
+        <NavItem href='/add'>
+          Add Track
+        </NavItem> :
+        <NavItem href='/login'>Login</NavItem>
+      }
     </Nav>
   </Navbar>
   )
@@ -32,17 +37,19 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      access_token: null,
-      refresh_token: null
+      tokens: null,
+      user: null
     }
-    this.handleTokens = this.handleTokens.bind(this);
+    this.handleSession = this.handleSession.bind(this);
   }
 
-  handleTokens(tokens){
-    let { access_token, refresh_token } = tokens;
+  handleSession(data){
+    console.log('Hanlde session data: ', data);
+    let { tokens } = data;
+    let { user } = data;
     this.setState({
-      access_token,
-      refresh_token
+      tokens,
+      user
     })
   }
 
@@ -62,8 +69,10 @@ class App extends Component {
               <Playlist path='/' />
               <Player path='/player/:id' />
               <AddTrack path='/add' />
-              <AuthSuccess path='/success/:tokens' someprop='Iamsomeprop' sendTokens={this.handleTokens}
+              <AuthSuccess path='/success/:tokens'
+                sendSession={this.handleSession}
                 />
+              <ConnectedProfile path='/profile' />
             </Router>
           </Col>
       </Row>
