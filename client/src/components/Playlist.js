@@ -33,7 +33,7 @@ class Playlist extends Component {
         <Row>
         {this.state.tracks===null ?
           <Loading />:
-          this.state.tracks.map((track, i) => <TrackLink id={track._id} info={track.track_info} timestamp={track.date} key={i} />)
+          this.state.tracks.map((track, i) => <TrackLink id={track._id} info={track.track_info} timestamp={track.date} user={track.user} key={i} />)
         }
       </Row>
       </Grid>

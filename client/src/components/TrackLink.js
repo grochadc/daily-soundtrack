@@ -36,7 +36,7 @@ function TrackLink(props){
           </Media>
         </Panel.Body>
         <Panel.Footer>
-          Posted by: medicengonzo <div className='small'>{ calculateTimestamp(props.timestamp) }</div>
+          Posted by: {props.user} <div className='small'>{ calculateTimestamp(props.timestamp) }</div>
         </Panel.Footer>
       </Panel>
     </Link>
