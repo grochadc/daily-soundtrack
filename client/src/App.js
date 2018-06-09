@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Player from './components/Player';
 import Playlist from './components/Playlist'
-import AddTrack from './components/AddTrack';
+import AddTrack from './components/containers/AddTrack';
 import AuthSuccess from './components/containers/AuthSucces';
 import Profile from './components/containers/Profile';
 import Sidebar from './components/containers/Sidebar';
