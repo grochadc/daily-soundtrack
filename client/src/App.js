@@ -4,33 +4,10 @@ import Playlist from './components/Playlist'
 import AddTrack from './components/AddTrack';
 import AuthSuccess from './components/containers/AuthSucces';
 import Profile from './components/containers/Profile';
+import Sidebar from './components/containers/Sidebar';
 import { Router } from '@reach/router';
-import { Grid, Row, Col, Nav, NavItem, Navbar } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import './index.css';
-
-function Sidebar(props){
-  console.log(props.loggedIn);
-  return (
-    <Navbar fixedTop>
-      <Navbar.Header>
-        <Navbar.Brand>
-          Daily Soundtrack
-        </Navbar.Brand>
-      </Navbar.Header>
-    <Nav bsStyle="pills">
-      <NavItem href='/'>
-        Home
-      </NavItem>
-      { props.loggedIn ?
-        <NavItem href='/add'>
-          Add Track
-        </NavItem> :
-        <NavItem href='/login'>Login</NavItem>
-      }
-    </Nav>
-  </Navbar>
-  )
-};
 
 
 class App extends Component {
