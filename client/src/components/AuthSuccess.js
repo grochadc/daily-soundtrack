@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from '@reach/router';
 import axios from 'axios';
 
 class AuthSuccess extends Component {
@@ -27,6 +28,7 @@ class AuthSuccess extends Component {
           user: response.data
         }
         this.props.sendSession(sessionData);
+        this.props.handleData(response.data)
         this.setState({data: response.data})
       })
       .catch(err => console.log(err));
@@ -36,7 +38,10 @@ class AuthSuccess extends Component {
   render(){
     console.log(this.state.data);
     return (
+      <div>
       <div>Welcome {this.state.data!=null ? this.state.data.display_name : 'User'}</div>
+      <Link to='/profile'>Profile</Link>
+      </div>
     )
   }
 }

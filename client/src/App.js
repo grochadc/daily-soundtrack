@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Player from './components/Player';
 import Playlist from './components/Playlist'
 import AddTrack from './components/AddTrack';
-import AuthSuccess from './components/AuthSuccess';
+import ConnectedAuthSuccess from './components/containers/ConnectedAuthSucces';
 import ConnectedProfile from './components/containers/ConnectedProfile';
 import { Router } from '@reach/router';
 import { Grid, Row, Col, Nav, NavItem, Navbar } from 'react-bootstrap';
@@ -69,7 +69,7 @@ class App extends Component {
               <Playlist path='/' />
               <Player path='/player/:id' />
               <AddTrack path='/add' />
-              <AuthSuccess path='/success/:tokens'
+              <ConnectedAuthSuccess path='/success/:tokens'
                 sendSession={this.handleSession}
                 />
               <ConnectedProfile path='/profile' />

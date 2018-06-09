@@ -12,19 +12,7 @@ const initialState = {
     access_token: null,
     refresh_token: null,
   },
-  user_info: {
-    country: "MX",
-    display_name: "Gonzalo Rocha",
-    email: "mapaxin.sepsoso.n_n@hotmail.com",
-    external_urls:{spotify: "https://open.spotify.com/user/gonzaloroc"},
-    followers:{href: null, total: 33},
-    href:"https://api.spotify.com/v1/users/gonzaloroc",
-    id:"gonzaloroc",
-    images:[],
-    product:"premium",
-    type:"user",
-    uri:"spotify:user:gonzaloroc"
-  }
+  user_info: null
 }
 
 const store = createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

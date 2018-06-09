@@ -1,12 +1,17 @@
 import React from 'react';
 function Profile(props){
-  let { display_name, id, email } = props.user_info;
+  let loggedIn = props.user_info === null ? false : true;
   return (
     <div>
-    <div>Welcome, {display_name}!</div><br />
-    <div>Username: {id}</div><br />
-    <div>email: {email}</div><br />
-    </div>
+    {loggedIn ?
+      <div>
+      <div>Welcome, {props.user_info.display_name}!</div><br />
+      <div>Username: {props.user_info.id}</div><br />
+      <div>email: {props.user_info.email}</div><br />
+      </div> :
+      <div>Please Sign In</div>
+    }
+  </div>
   )
 }
 
