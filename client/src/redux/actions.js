@@ -5,4 +5,5 @@ function setUserInfo(payload){
   }
 }
 
-export default setUserInfo;
+
+export { setUserInfo };
