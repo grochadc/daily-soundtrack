@@ -16,7 +16,7 @@ function TrackLink(props){
       let msg = timeSeconds>1 ? ' seconds ago' : ' second ago'
       return parseInt(timeSeconds, 10)+msg;
     }else if(timeMinutes < 60){
-      let msg = timeMinutes>1 ? ' minutess ago' : ' minute ago'
+      let msg = timeMinutes>1 ? ' minutes ago' : ' minute ago'
       return parseInt(timeMinutes, 10)+msg;
     } else if(timeHours < 24){
       let msg = timeSeconds>1 ? ' hours ago' : ' hour ago'
