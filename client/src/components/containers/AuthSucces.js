@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AuthSucces from '../presentational/AuthSuccess';
-import { setUserInfo } from '../../redux/Actions';
+import { setUserInfo } from '../../redux/actions';
 
 const mapStateToProps = state => {
   return {
