@@ -41,6 +41,7 @@ router.get('/token', (req, res) => {
 
 const redirect_uri = 'http://localhost:3030/callback';
 const client_id = process.env.CLIENT_ID;
+
 router.get('/login', (req, res) => {
   var scopes = 'user-read-private user-read-email';
   res.redirect('https://accounts.spotify.com/authorize' +
@@ -57,13 +58,14 @@ router.get('/callback', (req, res) => {
     redirect_uri
   });
 
+  let success_url = process.env.NODE_ENV=='development'? 'http://localhost:3000/success/': 'http://localhost:3030/success/'
   request
     .post('https://accounts.spotify.com/api/token')
     .send(data)
     .set('Authorization', 'Basic '+secret)
     .end((err, response) => {
       if(err) res.send(err);
-      else res.redirect('http://localhost:3000/success/'+response.text);
+      else res.redirect(success_url+response.text);
     })
 });
 
