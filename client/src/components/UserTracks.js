@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Loading from './Loading';
 import TrackLink from './TrackLink';
 import axios from 'axios';
-import { Grid, Row } from 'react-bootstrap';
+import { Grid, Row, PageHeader } from 'react-bootstrap';
 
 class UserTracks extends Component {
   constructor() {
@@ -29,6 +29,7 @@ class UserTracks extends Component {
   render() {
     return (
       <Grid>
+        <PageHeader>{this.props.user}'s Playlist</PageHeader>
         <Row>
         {this.state.tracks===null ?
           <Loading />:
