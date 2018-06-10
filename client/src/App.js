@@ -5,6 +5,7 @@ import AddTrack from './components/containers/AddTrack';
 import AuthSuccess from './components/containers/AuthSucces';
 import Profile from './components/containers/Profile';
 import Sidebar from './components/containers/Sidebar';
+import UserTracks from './components/UserTracks'
 import { Router } from '@reach/router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import './index.css';
@@ -52,6 +53,7 @@ class App extends Component {
                 sendSession={this.handleSession}
                 />
               <Profile path='/profile' />
+              <UserTracks path='/playlist/:user' />
             </Router>
           </Col>
       </Row>
