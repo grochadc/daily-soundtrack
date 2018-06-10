@@ -9,6 +9,7 @@ import { Router } from '@reach/router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import './index.css';
 
+const NotFound = () => <p>404: Sorry, not found</p>
 
 class App extends Component {
   constructor(){
@@ -43,6 +44,7 @@ class App extends Component {
         <Row>
           <Col>
             <Router>
+              <NotFound default />
               <Playlist path='/' />
               <Player path='/player/:id' />
               <AddTrack path='/add' />
