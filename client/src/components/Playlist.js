@@ -2,34 +2,34 @@ import React, { Component } from 'react';
 import Loading from './Loading';
 import TrackLink from './TrackLink';
 import axios from 'axios';
-import { Row, Grid } from 'react-bootstrap';
+import { Grid, Row, PageHeader } from 'react-bootstrap';
 
 class Playlist extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       tracks: null
     }
   }
-  componentDidMount(){
-    let that = this;
-    axios.get('http://localhost:3030/api/v1/Track?sort={"date":-1}',
-    {
-      headers: {
-        'Content-type': 'application/json'
-      }
+  componentDidMount() {
+    let { user } = this.props;
+    let query = { user };
+    axios({
+      url: 'http://localhost:3030/api/v1/Track?query='+JSON.stringify(query),
+      method: 'get',
     })
     .then((response) => {
-      let { data } = response
-      that.setState({
-        tracks: data
-      })
+      let tracks = response.data;
+      this.setState({
+        tracks
+      });
     })
-    .catch((error) => console.log(error));
+    .catch((err) => console.error(err));
   }
-  render(){
-    return(
+  render() {
+    return (
       <Grid>
+        <PageHeader>{this.props.user}'s Playlist</PageHeader>
         <Row>
         {this.state.tracks===null ?
           <Loading />:
@@ -37,7 +37,7 @@ class Playlist extends Component {
         }
       </Row>
       </Grid>
-    )
+    );
   }
 }
 

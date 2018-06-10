@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Player from './components/Player';
-import Playlist from './components/Playlist'
+import Home from './components/Home'
 import AddTrack from './components/containers/AddTrack';
 import AuthSuccess from './components/containers/AuthSucces';
 import Profile from './components/containers/Profile';
 import Sidebar from './components/containers/Sidebar';
-import UserTracks from './components/UserTracks'
+import Playlist from './components/Playlist'
 import { Router } from '@reach/router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import './index.css';
@@ -46,14 +46,14 @@ class App extends Component {
           <Col>
             <Router>
               <NotFound default />
-              <Playlist path='/' />
+              <Home path='/' />
               <Player path='/player/:id' />
               <AddTrack path='/add' />
               <AuthSuccess path='/success/:tokens'
                 sendSession={this.handleSession}
                 />
               <Profile path='/profile' />
-              <UserTracks path='/playlist/:user' />
+              <Playlist path='/playlist/:user' />
             </Router>
           </Col>
       </Row>
