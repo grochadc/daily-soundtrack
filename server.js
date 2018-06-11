@@ -7,6 +7,13 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const restify = require('express-restify-mongoose');
+const session = require('express-session');
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
 
 app.use(bodyParser.json());
 app.use(methodOverride());
@@ -18,7 +25,7 @@ const trackModel = mongoose.model('Track', trackSchema );
 
 restify.serve(router, trackModel);
 
-router.get('/*', (req, res)=>{
+router.get('*', (req, res)=>{
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 })
 

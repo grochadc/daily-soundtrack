@@ -8,6 +8,7 @@
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express-restify-mongoose": "^4.3.0",
+    "express-session": "^1.15.6",
     "immutability-helper": "^2.7.0",
     "method-override": "^2.3.10",
     "mongoose": "^5.1.3",

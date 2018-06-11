@@ -14,6 +14,11 @@ router.use(function(req, res, next) {
   next();
 });
 
+router.use((req, res, next) => {
+  console.log('Tokens from session ', req.session);
+  next();
+})
+
 router.get('/api/v1/Track/around/:id',(req, res) => {
   async function findTracks(){
     let beforeDocs = await trackModel.find({'_id':{'$lt':req.params.id}}).sort({'_id':-1}).limit(1)
@@ -65,7 +70,14 @@ router.get('/callback', (req, res) => {
     .set('Authorization', 'Basic '+secret)
     .end((err, response) => {
       if(err) res.send(err);
-      else res.redirect(success_url+response.text);
+      else {
+        req.session.tokens = response.text;
+        req.session.save((err) => {
+          if(err) console.error(err);
+          console.log('Session saved');
+          res.redirect(success_url+response.text)
+        })
+      }
     })
 });
 
