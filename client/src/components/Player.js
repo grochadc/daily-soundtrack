@@ -17,7 +17,7 @@ export default class Player extends Component {
     let query = {
       _id: this.props.id
     }
-    axios.get('http://localhost:3030/api/v1/Track?query='+JSON.stringify(query),{
+    axios.get('/api/v1/Track?query='+JSON.stringify(query),{
       headers: {
         'Content-type': 'application-json'
       }
@@ -32,7 +32,7 @@ export default class Player extends Component {
       console.log(error);
     });
 
-    axios.get('http://localhost:3030/api/v1/Track/around/'+this.props.id)
+    axios.get('/api/v1/Track/around/'+this.props.id)
     .then((response) => {
       let docs = response.data;
       that.setState({

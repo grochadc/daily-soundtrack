@@ -8,12 +8,6 @@ const request = require('superagent');
 
 const trackModel = mongoose.model('Track', trackSchema );
 
-router.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 router.use((req, res, next) => {
   console.log('Tokens from session ', req.session);
   next();

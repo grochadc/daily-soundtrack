@@ -32,7 +32,7 @@ class AddTrack extends Component {
     let { artist, album, title, uri, art} = this.state;
     console.log('Submit art ',art);
 
-    axios.post('http://localhost:3030/api/v1/Track',{
+    axios.post('api/v1/Track',{
       track_info: {
         art,
         artist,
@@ -57,7 +57,7 @@ class AddTrack extends Component {
     let that = this;
     let uri = this.state.uri;
     async function getToken(){
-      let response = await axios.get('http://localhost:3030/token');
+      let response = await axios.get('/token');
       let token = response.data.access_token;
       let trackAPI = await axios({
                               method: 'GET',

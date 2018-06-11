@@ -15,7 +15,7 @@ class Playlist extends Component {
     let { user } = this.props;
     let query = { user };
     axios({
-      url: 'http://localhost:3030/api/v1/Track?query='+JSON.stringify(query),
+      url: '/api/v1/Track?query='+JSON.stringify(query),
       method: 'get',
     })
     .then((response) => {
