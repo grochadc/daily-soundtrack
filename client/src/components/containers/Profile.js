@@ -7,7 +7,6 @@ const mapStateToProps = state => {
   }
 }
 
-console.log(mapStateToProps);
 
 const ConnectedProfile = connect(mapStateToProps)(Profile);
 

@@ -2,12 +2,6 @@ import { connect } from 'react-redux';
 import AuthSucces from '../presentational/AuthSuccess';
 import { setUserInfo } from '../../redux/actions';
 
-const mapStateToProps = state => {
-  return {
-    user_info: state.user_info,
-  }
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     handleData: info => {
@@ -15,8 +9,6 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
-
-console.log(mapStateToProps);
 
 const ConnectedAuthSucces = connect(null, mapDispatchToProps)(AuthSucces);
 
