@@ -20,7 +20,7 @@
     "superagent": "^3.8.3"
   },
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "NODE_ENV=development nodemon server.js",
     "prod": "NODE_ENV=production nodemon server.js"
   },
   "nodemonConfig": {

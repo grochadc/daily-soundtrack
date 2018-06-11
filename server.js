@@ -27,4 +27,5 @@ app.use(router);
 let port = process.env.PORT || 3030
 app.listen(port, function () {
   console.log('Example app listening on port '+port+'!');
+  console.log('Node enviroment', process.env.NODE_ENV);
 });
