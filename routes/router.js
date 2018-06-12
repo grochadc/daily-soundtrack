@@ -60,12 +60,7 @@ router.get('/callback', (req, res) => {
     .end((err, response) => {
       if(err) res.send(err);
       else {
-        req.session.tokens = response.text;
-        req.session.save((err) => {
-          if(err) console.error(err);
-          console.log('Session saved');
           res.redirect(success_url+response.text)
-        })
       }
     })
 });
