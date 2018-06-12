@@ -5,5 +5,11 @@ function setUserInfo(payload){
   }
 }
 
+function logoutUser(){
+  return {
+    type: 'LOGOUT_USER'
+  }
+}
 
-export { setUserInfo };
+
+export { setUserInfo, logoutUser };

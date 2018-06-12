@@ -10,6 +10,11 @@ const initialState = {
 
 function reducer(state = initialState, action){
   switch(action.type){
+    case 'LOGOUT_USER':
+      return {
+        ...state,
+        user_info: null
+      }
     case 'SET_USER_INFO':
       return {
         ...state,

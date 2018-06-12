@@ -6,6 +6,7 @@ import AuthSuccess from './components/containers/AuthSucces';
 import Profile from './components/containers/Profile';
 import Sidebar from './components/containers/Sidebar';
 import Playlist from './components/Playlist'
+import Logout from './components/containers/Logout.js'
 import { Router } from '@reach/router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import './index.css';
@@ -54,6 +55,7 @@ class App extends Component {
                 />
               <Profile path='/profile' />
               <Playlist path='/playlist/:user' />
+              <Logout path='/logout' />
             </Router>
           </Col>
       </Row>
