@@ -25,7 +25,7 @@ class AuthSuccess extends Component {
     })
       .then(response => {
         this.props.handleData(response.data)
-        localStorage.setItem('jwt',sign({user_info: response.data}, 'supersecret'));
+        localStorage.setItem('jwt',sign({user_info: response.data}, process.env.REACT_APP_WEBTOKEN_SECRET)));
       })
       .catch(err => console.log(err));
     }
