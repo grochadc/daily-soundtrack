@@ -4,15 +4,18 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './redux/Reducer'
+import { verify } from 'jsonwebtoken';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+
+let info_from_local_storage = localStorage.getItem('jwt') ? verify(localStorage.getItem('jwt'), 'supersecret').user_info : null;
 
 const initialState = {
   tokens: {
     access_token: null,
     refresh_token: null,
   },
-  user_info: null
+  user_info: info_from_local_storage
 }
 
 const store = createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

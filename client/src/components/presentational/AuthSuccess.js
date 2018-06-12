@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import axios from 'axios';
+import { sign } from 'jsonwebtoken';
 
 class AuthSuccess extends Component {
   constructor(props){
@@ -23,13 +24,8 @@ class AuthSuccess extends Component {
       }
     })
       .then(response => {
-        let sessionData = {
-          tokens: this.tokens,
-          user: response.data
-        }
-        this.props.sendSession(sessionData);
         this.props.handleData(response.data)
-        this.setState({data: response.data})
+        localStorage.setItem('jwt',sign({user_info: response.data}, 'supersecret'));
       })
       .catch(err => console.log(err));
     }
