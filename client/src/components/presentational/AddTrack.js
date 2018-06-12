@@ -90,9 +90,9 @@ class AddTrack extends Component {
     return (
       <Media>
         <Media.Body>
-          <label>Artist: <input type="text" name="artist" value={artist} onChange={this.handleChange} /></label><br />
-          <label>Song: <input type="text" name="title" value={title} onChange={this.handleChange} /></label><br />
-          <label>Album: <input type="text" name="album" value={album} onChange={this.handleChange} /></label><br />
+          <label>Artist: <input type="text" name="artist" value={artist} onChange={this.handleChange} disabled /></label><br />
+          <label>Song: <input type="text" name="title" value={title} onChange={this.handleChange} disabled /></label><br />
+          <label>Album: <input type="text" name="album" value={album} onChange={this.handleChange} disabled /></label><br />
           <label>URI: <input type="text" name="uri" value={uri} onChange={this.handleChange} /></label><br />
           <button onClick={this.handleShow}> Show </button><br />
           { this.state.showSubmit ? <button onClick={this.handleSubmit}>Submit</button> : null}
