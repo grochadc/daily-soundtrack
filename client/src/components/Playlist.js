@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Loading from './Loading';
+import { Loading } from './Utils';
 import TrackLink from './TrackLink';
 import axios from 'axios';
 import { Grid, Row, PageHeader } from 'react-bootstrap';

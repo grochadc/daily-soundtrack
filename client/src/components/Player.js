@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Loading  from './Loading';
+import { Loading }  from './Utils';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 
 export default class Player extends Component {

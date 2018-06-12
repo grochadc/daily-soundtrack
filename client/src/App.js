@@ -7,11 +7,10 @@ import Profile from './components/containers/Profile';
 import Sidebar from './components/containers/Sidebar';
 import Playlist from './components/Playlist'
 import Logout from './components/containers/Logout.js'
+import { NotFound } from './components/Utils.js'
 import { Router } from '@reach/router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import './index.css';
-
-const NotFound = () => <p>404: Sorry, not found</p>
 
 class App extends Component {
   constructor(){
