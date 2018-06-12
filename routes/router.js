@@ -8,11 +8,6 @@ const request = require('superagent');
 
 const trackModel = mongoose.model('Track', trackSchema );
 
-router.use((req, res, next) => {
-  console.log('Tokens from session ', req.session);
-  next();
-})
-
 router.get('/api/v1/Track/around/:id',(req, res) => {
   async function findTracks(){
     let beforeDocs = await trackModel.find({'_id':{'$lt':req.params.id}}).sort({'_id':-1}).limit(1)
