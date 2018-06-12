@@ -8,7 +8,7 @@ import { verify } from 'jsonwebtoken';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-let info_from_local_storage = localStorage.getItem('jwt') ? verify(localStorage.getItem('jwt'), process.env.REACT_APP_WEBTOKEN_SECRET)).user_info : null;
+let info_from_local_storage = localStorage.getItem('jwt') ? verify(localStorage.getItem('jwt'), process.env.REACT_APP_WEBTOKEN_SECRET).user_info : null;
 
 const initialState = {
   tokens: {
