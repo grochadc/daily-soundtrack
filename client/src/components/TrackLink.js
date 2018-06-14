@@ -1,14 +1,10 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import { Panel, Media } from 'react-bootstrap';
-import timeDiff from '../lib/utils';
+import { distanceInWordsToNow } from 'date-fns';
 
 function TrackLink(props){
   let { info } = props
-
-  let arr = timeDiff(new Date('2018-06-11T00:27:57.134Z'));
-
-  let timeStamp = arr[0]>1 ? arr[0]+' '+arr[1]+'s': arr[0]+' '+arr[1]
 
   return(
       <Panel>
@@ -24,7 +20,7 @@ function TrackLink(props){
           </Link>
         </Panel.Body>
         <Panel.Footer>
-          Posted by: <Link to={'/playlist/'+props.user}>{props.user}</Link> <div className='small'>{ timeStamp } ago</div>
+          Posted by: <Link to={'/playlist/'+props.user}>{props.user}</Link> <div className='small'>{distanceInWordsToNow(new Date(props.timestamp))} ago</div><br />
         </Panel.Footer>
       </Panel>
   )

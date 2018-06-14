@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3030",
   "dependencies": {
     "axios": "^0.18.0",
+    "date-fns": "^1.29.0",
     "express": "^4.16.3",
     "history": "^4.7.2",
     "immutability-helper": "^2.7.0",
