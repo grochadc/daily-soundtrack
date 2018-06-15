@@ -1,41 +1,44 @@
-import React, { Component } from 'react';
-import { Loading } from './Utils';
-import TrackLink from './TrackLink';
-import axios from 'axios';
-import { Grid, Row, PageHeader } from 'react-bootstrap';
+import React, { Component } from "react";
+import { Loading } from "./Utils";
+import TrackLink from "./TrackLink";
+import axios from "axios";
+import { Grid, Row } from "react-bootstrap";
 
 class Playlist extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       tracks: null
-    }
+    };
   }
   componentDidMount() {
-    let { user } = this.props;
-    let query = { user };
+    let query = this.props.user
+      ? "query=" + JSON.stringify({ user: this.props.user })
+      : 'sort={"date":-1}';
     axios({
-      url: '/api/v1/Track?query='+JSON.stringify(query),
-      method: 'get',
+      url: "/api/v1/Track?" + query,
+      method: "get"
     })
-    .then((response) => {
-      let tracks = response.data;
-      this.setState({
-        tracks
-      });
-    })
-    .catch((err) => console.error(err));
+      .then(response => {
+        let tracks = response.data;
+        this.setState({
+          tracks
+        });
+      })
+      .catch(err => console.error(err));
   }
   render() {
     return (
       <Grid>
-        <PageHeader>{this.props.user}'s Playlist</PageHeader>
         <Row>
-        {this.state.tracks===null ?
-          <Loading />:
-          this.state.tracks.map((track, i) => <TrackLink id={track._id} info={track.track_info} timestamp={track.date} user={track.user} key={i} />)
-        }
-      </Row>
+          {this.state.tracks === null ? (
+            <Loading />
+          ) : (
+            this.state.tracks.map((track, i) => (
+              <TrackLink {...track} key={i} />
+            ))
+          )}
+        </Row>
       </Grid>
     );
   }
