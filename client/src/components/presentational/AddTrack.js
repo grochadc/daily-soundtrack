@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Media } from "react-bootstrap";
 import { navigate } from "@reach/router";
 import { objectToURL } from "../../lib/utils";
+import TrackInfo from "../TrackInfo";
 import axios from "axios";
 import diffenrenceInHours from "date-fns/difference_in_hours";
 
@@ -113,49 +114,13 @@ class AddTrack extends Component {
   }
 
   render() {
-    let { artist, title, album, uri, canAddTrack } = this.state;
+    //Pick all the state items i'll use and rest the mediaInfo to use into track component
+    let { uri, canAddTrack, showSubmit, ...mediaInfo } = this.state;
     return (
       <div>
         {canAddTrack ? (
           <Media>
             <Media.Body>
-              {title ? (
-                <div>
-                  <label>
-                    Artist:{" "}
-                    <input
-                      type="text"
-                      name="artist"
-                      value={artist}
-                      onChange={this.handleChange}
-                      disabled
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Song:{" "}
-                    <input
-                      type="text"
-                      name="title"
-                      value={title}
-                      onChange={this.handleChange}
-                      disabled
-                    />
-                  </label>
-                  <br />
-                  <label>
-                    Album:{" "}
-                    <input
-                      type="text"
-                      name="album"
-                      value={album}
-                      onChange={this.handleChange}
-                      disabled
-                    />
-                  </label>
-                  <br />
-                </div>
-              ) : null}
               <label>
                 URI:{" "}
                 <input
@@ -165,22 +130,24 @@ class AddTrack extends Component {
                   onChange={this.handleChange}
                 />
               </label>
-              <br />
               <button onClick={this.handleShow}> Show </button>
-              <br />
               {this.state.showSubmit ? (
                 <button onClick={this.handleSubmit}>Submit</button>
               ) : null}
             </Media.Body>
-            <Media.Left>
-              <img alt={"Album Art"} src={this.state.art} />
-            </Media.Left>
+            <Media.Left />
           </Media>
         ) : (
           "Please wait " +
           diffenrenceInHours(new Date(), this.state.prevTrackdate) +
           " hours to submit a new track."
         )}
+        {showSubmit ? (
+          <div>
+            <h2>Did you mean this track?</h2>
+            <TrackInfo {...mediaInfo} />
+          </div>
+        ) : null}
       </div>
     );
   }
