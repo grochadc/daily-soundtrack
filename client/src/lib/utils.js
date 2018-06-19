@@ -1,23 +1,21 @@
-function timeDiff(then) {
-  let now = new Date().getTime();
+import axios from "axios";
 
-  let timeDiff = now - then;
-  let Seconds = timeDiff / 1000;
-
-  if (Seconds > 31540000) {
-    return [Math.floor(Seconds / 31540000), "year"];
-  } else if (Seconds > 2628000) {
-    return [Math.floor(Seconds / 2628000), "month"];
-  } else if (Seconds > 604800) {
-    return [Math.floor(Seconds / 604800), "week"];
-  } else if (Seconds > 86400) {
-    return [Math.floor(Seconds / 86400), "day"];
-  } else if (Seconds > 3600) {
-    return [Math.floor(Seconds / 3600), "hour"];
-  } else if (Seconds > 60) {
-    return [Math.floor(Seconds / 60), "minute"];
+async function getBackEnd(collection, method, query) {
+  let url = "api/v1/" + collection + "?" + objectToURL(query);
+  try {
+    return await axios(url).data;
+  } catch (err) {
+    console.error(err);
   }
 }
+
+let query = objectToURL({
+  query: { user: "gonzaloroc" },
+  sort: { date: -1 },
+  limit: 1,
+  select: "date"
+});
+let that = this;
 
 const objectToURL = obj =>
   Object.entries(obj)
@@ -27,4 +25,4 @@ const objectToURL = obj =>
     })
     .join("&");
 
-export { timeDiff, objectToURL };
+export { objectToURL, getBackEnd };
