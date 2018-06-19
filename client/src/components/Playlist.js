@@ -12,11 +12,10 @@ class Playlist extends Component {
     };
   }
   componentDidMount() {
-    let query = this.props.user
-      ? "query=" + JSON.stringify({ user: this.props.user })
-      : 'sort={"date":-1}';
+    let { query } = this.props;
+    let newQuery = query.type + "=" + JSON.stringify(query.value);
     axios({
-      url: "/api/v1/Track?" + query,
+      url: "/api/v1/Track?" + newQuery,
       method: "get"
     })
       .then(response => {

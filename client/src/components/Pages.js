@@ -3,14 +3,22 @@ import Playlist from "./Playlist";
 import { PageHeader } from "react-bootstrap";
 
 function Home(props) {
-  return <Playlist />;
+  let query = {
+    type: "sort",
+    value: { date: -1 }
+  };
+  return <Playlist query={query} />;
 }
 
 function UserTracks(props) {
+  let query = {
+    type: "query",
+    value: { user: props.user }
+  };
   return (
     <div>
       <PageHeader>{props.user}'s Playlist</PageHeader>
-      <Playlist user={props.user} />
+      <Playlist query={query} />
     </div>
   );
 }
