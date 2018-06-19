@@ -6,16 +6,18 @@ export default function TrackInfo(props) {
   return (
     <Panel>
       <Media>
-        <img alt={"Album Art"} src={art} height="200" width="200" />
+        <Media.Left>
+          <img alt={"Album Art"} src={art} height="100" width="100" />
+        </Media.Left>
         <Media.Body>
           <p>
-            <h4>Title:</h4> {title}
+            <strong>Title:</strong> {title}
           </p>
           <p>
-            <h4>Artist:</h4> {artist}
+            <strong>Artist:</strong> {artist}
           </p>
           <p>
-            <h4>Album:</h4> {album}
+            <strong>Album:</strong> {album}
           </p>
         </Media.Body>
       </Media>

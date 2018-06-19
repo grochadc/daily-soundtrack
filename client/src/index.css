@@ -1,15 +1,24 @@
 .fixed {
-  position: fixed
+  position: fixed;
 }
 
 body {
-  padding-top: 60px
+  padding-top: 60px;
 }
 
 .navbar-brand {
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
 }
 
-.navbar-nav{
-  font-family: 'Oswald', sans-serif;
+.navbar-nav {
+  font-family: "Oswald", sans-serif;
+}
+
+.flexBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.panel-track {
+  width: 200px;
 }
