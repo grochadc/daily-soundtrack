@@ -9,14 +9,6 @@ async function getBackEnd(collection, method, query) {
   }
 }
 
-let query = objectToURL({
-  query: { user: "gonzaloroc" },
-  sort: { date: -1 },
-  limit: 1,
-  select: "date"
-});
-let that = this;
-
 const objectToURL = obj =>
   Object.entries(obj)
     .map(([key, val]) => {
