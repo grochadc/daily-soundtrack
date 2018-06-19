@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const trackSchema = new Schema({
@@ -10,7 +10,8 @@ const trackSchema = new Schema({
   },
   uri: String,
   date: Date,
-  user: String
-})
+  user: String,
+  message: String
+});
 
 module.exports = trackSchema;

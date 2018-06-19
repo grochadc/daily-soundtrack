@@ -3,8 +3,10 @@ import { Media } from "react-bootstrap";
 import { navigate } from "@reach/router";
 import { objectToURL } from "../../lib/utils";
 import TrackInfo from "../TrackInfo";
+import TrackMessage from "../TrackMessage";
 import axios from "axios";
 import diffenrenceInHours from "date-fns/difference_in_hours";
+import "../../index.css";
 
 class AddTrack extends Component {
   constructor() {
@@ -16,6 +18,7 @@ class AddTrack extends Component {
       uri: "",
       art: "",
       user: "",
+      message: "",
       showSubmit: false,
       canAddTrack: true,
       prevTrackdate: ""
@@ -54,7 +57,7 @@ class AddTrack extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let { artist, album, title, uri, art } = this.state;
+    let { artist, album, title, uri, art, message } = this.state;
     console.log("Submit art ", art);
 
     axios
@@ -67,7 +70,8 @@ class AddTrack extends Component {
         },
         uri,
         date: new Date(),
-        user: this.props.user
+        user: this.props.user,
+        message
       })
       .then(response => {
         console.log(response);
@@ -115,7 +119,7 @@ class AddTrack extends Component {
 
   render() {
     //Pick all the state items i'll use and rest the mediaInfo to use into track component
-    let { uri, canAddTrack, showSubmit, ...mediaInfo } = this.state;
+    let { uri, message, canAddTrack, showSubmit, ...mediaInfo } = this.state;
     return (
       <div>
         {canAddTrack ? (
@@ -131,11 +135,8 @@ class AddTrack extends Component {
                 />
               </label>
               <button onClick={this.handleShow}> Show </button>
-              {this.state.showSubmit ? (
-                <button onClick={this.handleSubmit}>Submit</button>
-              ) : null}
+              <br />
             </Media.Body>
-            <Media.Left />
           </Media>
         ) : (
           "Please wait " +
@@ -144,8 +145,14 @@ class AddTrack extends Component {
         )}
         {showSubmit ? (
           <div>
-            <h2>Did you mean this track?</h2>
+            <h4>Did you mean this track?</h4>
             <TrackInfo {...mediaInfo} />
+            <TrackMessage
+              value={message}
+              name="message"
+              onChange={this.handleChange}
+            />
+            <button onClick={this.handleSubmit}>Submit</button>
           </div>
         ) : null}
       </div>

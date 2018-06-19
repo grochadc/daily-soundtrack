@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "@reach/router";
 import { Panel, Media } from "react-bootstrap";
 import { distanceInWordsToNow } from "date-fns";
+import "../index.css";
 
 function TrackLink(props) {
-  let { track_info } = props;
-  console.log(props);
+  let { track_info, message } = props;
 
   return (
     <Panel>
@@ -18,6 +18,7 @@ function TrackLink(props) {
             <Media.Body>
               <h3>{track_info.title}</h3>
               by {track_info.artist}
+              <p>{message}</p>
             </Media.Body>
           </Media>
         </Link>
