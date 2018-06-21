@@ -1,10 +1,8 @@
-import React from 'react';
+import React from "react";
 
-function Logout(){
-  localStorage.removeItem('jwt');
-  return (
-    <h1>Logged out</h1>
-  )
+function Logout() {
+  localStorage.removeItem("daily-soundtrack");
+  return <h1>Logged out</h1>;
 }
 
 export default Logout;

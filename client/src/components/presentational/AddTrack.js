@@ -58,7 +58,6 @@ class AddTrack extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let { artist, album, title, uri, art, message } = this.state;
-    console.log("Submit art ", art);
 
     axios
       .post("api/v1/Track", {
@@ -74,7 +73,6 @@ class AddTrack extends Component {
         message
       })
       .then(response => {
-        console.log(response);
         if (response.status === 201) {
           alert("Song submitted");
           navigate("/");
