@@ -2,6 +2,7 @@ require("dotenv").config();
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const trackSchema = require("../schemas/track");
+const userSchema = require("../schemas/User");
 const axios = require("axios");
 const queryString = require("query-string");
 const request = require("superagent");
@@ -77,9 +78,48 @@ router.get("/callback", (req, res) => {
     .end((err, response) => {
       if (err) res.send(err);
       else {
-        res.redirect(success_url + response.text);
+        let { access_token } = JSON.parse(response.text);
+        axios({
+          url: "https://api.spotify.com/v1/me",
+          headers: {
+            Authorization: "Bearer " + access_token
+          }
+        })
+          .then(({ data }) => {
+            userModel
+              .find({ "spotify_info.id": data.id })
+              .then(result => {
+                if (result.length === 0) {
+                  userModel.create(
+                    {
+                      spotify_info: data,
+                      following: []
+                    },
+                    (err, doc) => {
+                      if (err) {
+                        console.error(err);
+                      } else {
+                        console.log("Sending new doc ", doc);
+                        res.redirect(
+                          success_url + encodeURIComponent(JSON.stringify(doc))
+                        );
+                      }
+                    }
+                  );
+                } else {
+                  let newResult = result[0];
+                  res.redirect(
+                    success_url + encodeURIComponent(JSON.stringify(newResult))
+                  );
+                }
+              })
+              .catch(err => console.error(err));
+          })
+          .catch(err => console.error(err));
       }
     });
 });
+
+const userModel = mongoose.model("User", userSchema);
 
 module.exports = router;

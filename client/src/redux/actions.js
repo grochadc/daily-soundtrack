@@ -1,15 +1,14 @@
-function setUserInfo(payload){
+function setUserInfo(payload) {
   return {
-    type: 'SET_USER_INFO',
+    type: "SET_SPOTIFY_INFO",
     payload
-  }
+  };
 }
 
-function logoutUser(){
+function logoutUser() {
   return {
-    type: 'LOGOUT_USER'
-  }
+    type: "LOGOUT_USER"
+  };
 }
-
 
 export { setUserInfo, logoutUser };

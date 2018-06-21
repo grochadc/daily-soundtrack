@@ -1,44 +1,34 @@
-import React, { Component } from 'react';
-import { Link } from '@reach/router';
-import axios from 'axios';
-import { sign } from 'jsonwebtoken';
+import React, { Component } from "react";
+import { Link } from "@reach/router";
+import { sign } from "jsonwebtoken";
 
 class AuthSuccess extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      data: null,
-    }
-
-    this.tokens = JSON.parse(this.props.tokens);
-    this.access_token = this.tokens.access_token;
-    this.refresh_token = this.tokens.refresh_token;
-
+      data: null
+    };
   }
 
-  componentDidMount(){
-    axios({
-      url: 'https://api.spotify.com/v1/me',
-      headers: {
-        'Authorization': 'Bearer '+this.access_token
-      }
-    })
-      .then(response => {
-        this.props.handleData(response.data)
-        localStorage.setItem('jwt',sign({user_info: response.data}, process.env.REACT_APP_WEBTOKEN_SECRET));
-      })
-      .catch(err => console.log(err));
-    }
+  componentDidMount() {
+    let User = JSON.parse(this.props.userdocument);
+    this.props.handleData(User);
+    localStorage.setItem(
+      "daily-soundtrack",
+      sign({ userid: User._id }, process.env.REACT_APP_WEBTOKEN_SECRET)
+    );
+  }
 
-
-  render(){
-    console.log(this.state.data);
+  render() {
     return (
       <div>
-      <div>Welcome {this.state.data!=null ? this.state.data.display_name : 'User'}</div>
-      <Link to='/profile'>Profile</Link>
+        <div>
+          Welcome{" "}
+          {this.state.data != null ? this.state.data.display_name : "User"}
+        </div>
+        <Link to="/profile">Profile</Link>
       </div>
-    )
+    );
   }
 }
 
