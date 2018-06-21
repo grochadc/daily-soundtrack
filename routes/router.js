@@ -30,18 +30,41 @@ router.get("/api/v1/Track/around/:id", (req, res) => {
 
 let secret = process.env.SECRET;
 console.log(secret ? "Secret is good" : "No secret provided");
+
+let SPOTIFY_TOKEN;
+
 router.get("/token", (req, res) => {
-  console.log("Requested token");
-  axios({
-    method: "post",
-    headers: {
-      Authorization: "Basic " + secret
-    },
-    url: "https://accounts.spotify.com/api/token",
-    data: "grant_type=client_credentials"
-  })
-    .then(response => res.send(response.data))
-    .catch(err => res.send(err));
+  console.log("Client requested token");
+  if (SPOTIFY_TOKEN) {
+    if ((new Date() - SPOTIFY_TOKEN.createdAt) / 1000 >= 3600) {
+      console.log("Token expired, getting a new one");
+      getSpotifyToken();
+    } else {
+      console.log("Token hasn't expired");
+      res.send(SPOTIFY_TOKEN.token);
+    }
+  } else {
+    getSpotifyToken();
+  }
+
+  function getSpotifyToken() {
+    axios({
+      method: "post",
+      headers: {
+        Authorization: "Basic " + secret
+      },
+      url: "https://accounts.spotify.com/api/token",
+      data: "grant_type=client_credentials"
+    })
+      .then(({ data }) => {
+        SPOTIFY_TOKEN = {
+          token: data,
+          createdAt: new Date()
+        };
+        res.send(data);
+      })
+      .catch(err => res.send(err));
+  }
 });
 
 const redirect_uri = "http://localhost:3030/callback";
