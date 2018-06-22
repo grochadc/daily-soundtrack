@@ -145,4 +145,57 @@ router.get("/callback", (req, res) => {
 
 const userModel = mongoose.model("User", userSchema);
 
+/*
+body:
+
+{
+'folow': 'usernameToFollow',
+'currentUser': {
+  '_id': '5b2ec0a0f1f7c723dd01fb52'
+  (OR)
+  'username': 'currentUserName'
+  }
+}
+*/
+router.post("/follow", (req, res) => {
+  console.log("Posting to /follow endpoint");
+  let query;
+  let { follow, currentUser } = req.body;
+  if (currentUser._id) {
+    console.log("requested with _id");
+    query = {
+      _id: currentUser._id
+    };
+  } else if (currentUser.username) {
+    console.log("requested with username");
+    query = {
+      "spotify_info.id": currentUser.username
+    };
+  }
+  userModel.update(query, { $addToSet: { following: follow } }, (err, doc) => {
+    res.status(201).send("User updated!");
+  });
+});
+
+router.post("/unfollow", (req, res) => {
+  console.log("Posting to /unfollow endpoint");
+  let query;
+  let { unfollow, currentUser } = req.body;
+  if (currentUser._id) {
+    console.log("requested with _id");
+    query = {
+      _id: currentUser._id
+    };
+  } else if (currentUser.username) {
+    console.log("requested with username");
+    query = {
+      "spotify_info.id": currentUser.username
+    };
+  }
+  console.log("Query: ", query);
+  userModel.update(query, { $pull: { following: unfollow } }, (err, doc) => {
+    res.status(201).send("User updated!");
+  });
+});
+
 module.exports = router;
