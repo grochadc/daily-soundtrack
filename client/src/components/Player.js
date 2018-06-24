@@ -51,16 +51,16 @@ export default class Player extends Component {
       <Grid>
         <Row>
           <Col sm={7} smOffset={2}>
-            {this.state.trackBefore ? (
+            {this.state.trackBefore && (
               <Button>
                 <a href={"/player/" + this.state.trackBefore._id}>Before</a>
               </Button>
-            ) : null}
-            {this.state.trackAfter ? (
+            )}
+            {this.state.trackAfter && (
               <Button className="pull-right">
                 <a href={"/player/" + this.state.trackAfter._id}>After</a>
               </Button>
-            ) : null}
+            )}
           </Col>
         </Row>
         <Row>

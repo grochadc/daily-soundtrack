@@ -28,7 +28,7 @@ function Sidebar(props) {
           <NavItem href="http://localhost:3030/login">Login</NavItem>
         )}
       </Nav>
-      {loggedIn ? (
+      {loggedIn && (
         <Nav pullRight>
           <NavItem>
             <Link to={"/profile"}>{props.user_info.display_name}</Link>
@@ -37,7 +37,7 @@ function Sidebar(props) {
             <Link to="/logout">Logout</Link>
           </NavItem>
         </Nav>
-      ) : null}
+      )}
     </Navbar>
   );
 }

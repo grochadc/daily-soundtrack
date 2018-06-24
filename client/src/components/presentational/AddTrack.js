@@ -122,21 +122,10 @@ class AddTrack extends Component {
     return (
       <div>
         {canAddTrack ? (
-          <Media>
-            <Media.Body>
-              <label>
-                URI:{" "}
-                <input
-                  type="text"
-                  name="uri"
-                  value={uri}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <button onClick={this.handleShow}> Show </button>
-              <br />
-            </Media.Body>
-          </Media>
+          <URIForm
+            handleChange={this.handleChange}
+            handleShow={this.handleShow}
+          />
         ) : (
           "Please wait " +
           (24 -
@@ -146,21 +135,52 @@ class AddTrack extends Component {
             )) +
           " hours to submit a new track."
         )}
-        {showSubmit ? (
-          <div>
-            <h4>Did you mean this track?</h4>
-            <TrackInfo {...mediaInfo} />
-            <TrackMessage
-              value={message}
-              name="message"
-              onChange={this.handleChange}
-            />
-            <button onClick={this.handleSubmit}>Submit</button>
-          </div>
-        ) : null}
+        {showSubmit && (
+          <TrackInfoAndMessage
+            mediaInfo={mediaInfo}
+            message={message}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+        )}
       </div>
     );
   }
+}
+
+function TrackInfoAndMessage(props) {
+  return (
+    <div>
+      <h4>Did you mean this track?</h4>
+      <TrackInfo {...props.mediaInfo} />
+      <TrackMessage
+        value={props.message}
+        name="message"
+        onChange={props.handleChange}
+      />
+      <button onClick={props.handleSubmit}>Submit</button>
+    </div>
+  );
+}
+
+function URIForm(props) {
+  return (
+    <Media>
+      <Media.Body>
+        <label>
+          URI:{" "}
+          <input
+            type="text"
+            name="uri"
+            value={props.uri}
+            onChange={props.handleChange}
+          />
+        </label>
+        <button onClick={props.handleShow}> Show </button>
+        <br />
+      </Media.Body>
+    </Media>
+  );
 }
 
 export default AddTrack;
