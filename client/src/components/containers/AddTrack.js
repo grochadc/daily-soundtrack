@@ -3,7 +3,7 @@ import AuthSucces from "../presentational/AddTrack";
 
 const mapStateToProps = state => {
   return {
-    user: state.username
+    user: state.spotify_info.id
   };
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { Panel, Media } from "react-bootstrap";
+import { Panel, Media, Well } from "react-bootstrap";
 import { distanceInWordsToNow } from "date-fns";
 import "../index.css";
 
@@ -18,8 +18,8 @@ function TrackLink(props) {
             <Media.Body>
               <h3>{track_info.title}</h3>
               by {track_info.artist}
-              <p>{message}</p>
             </Media.Body>
+            <Well style={{ marginTop: 10 }}>{message}</Well>
           </Media>
         </Link>
       </Panel.Body>
@@ -28,7 +28,6 @@ function TrackLink(props) {
         <div className="small">
           {distanceInWordsToNow(new Date(props.date))} ago
         </div>
-        <br />
       </Panel.Footer>
     </Panel>
   );

@@ -30,7 +30,7 @@ class AddTrack extends Component {
 
   componentDidMount() {
     let query = objectToURL({
-      query: { user: "gonzaloroc" },
+      query: { user: this.props.user },
       sort: { date: -1 },
       limit: 1,
       select: "date"
