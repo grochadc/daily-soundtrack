@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Player from "./components/Player";
-import { Home, UserTracks } from "./components/Pages";
+import { Home, FollowersTracks } from "./components/Pages";
+import UserTracks from "./components/containers/UserTracks";
 import AddTrack from "./components/containers/AddTrack";
 import AuthSuccess from "./components/containers/AuthSucces";
 import Profile from "./components/containers/Profile";
@@ -20,7 +21,6 @@ class App extends Component {
       tokens: null,
       user: null
     };
-    this.handleSession = this.handleSession.bind(this);
   }
 
   componentDidMount() {
@@ -45,17 +45,6 @@ class App extends Component {
       });
     }
   }
-
-  handleSession(data) {
-    console.log("Hanlde session data: ", data);
-    let { tokens } = data;
-    let { user } = data;
-    this.setState({
-      tokens,
-      user
-    });
-  }
-
   render() {
     return (
       <Grid>
@@ -69,17 +58,18 @@ class App extends Component {
         <Row>
           <Col>
             <Router>
-              <NotFound default />
               <Home path="/" />
+              <FollowersTracks
+                path="/dashboard"
+                following={this.props.userFollowing}
+              />
               <Player path="/player/:id" />
               <AddTrack path="/add" />
-              <AuthSuccess
-                path="/success/:userdocument"
-                sendSession={this.handleSession}
-              />
+              <AuthSuccess path="/success/:userdocument" />
               <Profile path="/profile" />
               <UserTracks path="/playlist/:user" />
               <Logout path="/logout" />
+              <NotFound default />
             </Router>
           </Col>
         </Row>

@@ -10,17 +10,17 @@ function Home(props) {
   return <Playlist query={query} />;
 }
 
-function UserTracks(props) {
+function FollowersTracks(props) {
   let query = {
     type: "query",
-    value: { user: props.user }
+    value: { user: { $in: props.following } }
   };
   return (
     <div>
-      <PageHeader>{props.user}'s Playlist</PageHeader>
+      <PageHeader> Your followers tracks</PageHeader>
       <Playlist query={query} />
     </div>
   );
 }
 
-export { Home, UserTracks };
+export { Home, FollowersTracks };
