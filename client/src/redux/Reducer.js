@@ -1,5 +1,9 @@
 const initialState = {
-  user: null
+  user: null,
+  spotify_info: {
+    id: null
+  },
+  following: []
 };
 
 function reducer(state = initialState, action) {
@@ -12,6 +16,16 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         ...action.payload
+      };
+    case "FOLLOW":
+      return {
+        ...state,
+        following: [...state.following, action.payload]
+      };
+    case "UNFOLLOW":
+      return {
+        ...state,
+        following: state.following.filter(el => !(el === action.payload)) //Immutably remove item
       };
     default:
       return state;

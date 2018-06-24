@@ -1,0 +1,74 @@
+[
+  {
+    "track_info": {
+      "album": "If you want it",
+      "title": "If You Want It",
+      "artist": "Slightly Stoopid",
+      "art": "https://i.scdn.co/image/6751b2007253076d9cf0be75ac870d857f046fe0"
+    },
+    "uri": "spotify:track:6csv4sjaic4Q3IMgNMEan8",
+    "date": "2018-06-20T20:54:42.952Z",
+    "user": "gonzaloroc",
+    "message": "Reggae time"
+  },
+  {
+    "track_info": {
+      "album": "This is America",
+      "title": "This Is America",
+      "artist": "Childish Gambino",
+      "art": "https://i.scdn.co/image/bda277aa41fad5507849e5d01540a920d1b41545"
+    },
+    "uri": "spotify:track:0b9oOr2ZgvyQu88wzixux9",
+    "date": "2018-06-20T20:54:42.952Z",
+    "user": "lizrodrz89",
+    "message": "Some Gambino for today"
+  },
+  {
+    "track_info": {
+      "album": "More Life",
+      "title": "Free Smoke",
+      "artist": "Drake",
+      "art": "https://i.scdn.co/image/3acc34a1f6b494f2a00ff916c54d6bc63fb7b0dc"
+    },
+    "uri": "spotify:track:05KOgYg8PGeJyyWBPi5ja8",
+    "date": "2018-06-20T20:54:42.952Z",
+    "user": "gonzaloroc",
+    "message": "I want some Drake"
+  },
+  {
+    "track_info": {
+      "album": "Jump Back - The Best Of The Rolling Stones, '71 - '93",
+      "title": "Miss You - Remastered",
+      "artist": "The Rolling Stones",
+      "art": "https://i.scdn.co/image/d98df59c480a87658dbfcb2959e0713065babeed"
+    },
+    "uri": "spotify:track:7j3rPeNrEG38UU2gPA42Qs",
+    "date": "2018-06-20T20:54:42.952Z",
+    "user": "lizrodrz89",
+    "message": "Classic Rock"
+  },
+  {
+    "track_info": {
+      "album": "808s & Heartbreak",
+      "title": "Say You Will",
+      "artist": "Kanye West",
+      "art": "https://i.scdn.co/image/e813e06978f72b9c965957b1b9789e98e1b2458b"
+    },
+    "uri": "spotify:track:5e5MKPtJuFb8NaeSEyV5gD",
+    "date": "2018-06-20T20:54:42.952Z",
+    "user": "blnfcue4bj0fz90tc6emkf74j",
+    "message": "Kanye is God"
+  },
+  {
+    "track_info": {
+      "album": "good kid, m.A.A.d city",
+      "title": "Swimming Pools (Drank) - Extended Version",
+      "artist": "Kendrick Lamar",
+      "art": "https://i.scdn.co/image/9d596b71e005be1e6514b9553a94df0121d30f00"
+    },
+    "uri": "spotify:track:3DFjTEueCBYqg7YE05eUJP",
+    "date": "2018-06-20T20:54:42.952Z",
+    "user": "blnfcue4bj0fz90tc6emkf74j",
+    "message": "Some good kendrick"
+  }
+]

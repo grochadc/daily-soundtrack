@@ -1,0 +1,66 @@
+[
+  {
+    "following": [],
+    "spotify_info": {
+      "display_name": null,
+      "external_urls": {
+        "spotify": "https://open.spotify.com/user/lizrodrz89"
+      },
+      "followers": {
+        "href": null,
+        "total": 15
+      },
+      "href": "https://api.spotify.com/v1/users/lizrodrz89",
+      "id": "lizrodrz89",
+      "images": [],
+      "type": "user",
+      "uri": "spotify:user:lizrodrz89"
+    }
+  },
+  {
+    "following": [],
+    "spotify_info": {
+      "display_name": "Gonzalo Rocha",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/user/gonzaloroc"
+      },
+      "followers": {
+        "href": null,
+        "total": 1
+      },
+      "href": "https://api.spotify.com/v1/users/gonzaloroc",
+      "id": "gonzaloroc",
+      "images": [
+        {
+          "height": null,
+          "url":
+            "https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/14731218_1139438369444150_2149076472940756734_n.jpg?_nc_cat=0&oh=3bd523f7a239e123611da1a482297807&oe=5BEB2FD6",
+          "width": null
+        }
+      ],
+      "type": "user",
+      "uri": "spotify:user:gonzaloroc"
+    }
+  },
+  {
+    "following": [],
+    "spotify_info": {
+      "country": "MX",
+      "display_name": "Gonzalo Rocha",
+      "email": "grochadc@gmail.com",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/user/blnfcue4bj0fz90tc6emkf74j"
+      },
+      "followers": {
+        "href": null,
+        "total": 33
+      },
+      "href": "https://api.spotify.com/v1/users/blnfcue4bj0fz90tc6emkf74j",
+      "id": "blnfcue4bj0fz90tc6emkf74j",
+      "images": [],
+      "product": "premium",
+      "type": "user",
+      "uri": "spotify:user:blnfcue4bj0fz90tc6emkf74j"
+    }
+  }
+]

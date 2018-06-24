@@ -11,4 +11,18 @@ function logoutUser() {
   };
 }
 
-export { setUserInfo, logoutUser };
+function follow(payload) {
+  return {
+    type: "FOLLOW",
+    payload
+  };
+}
+
+function unfollow(payload) {
+  return {
+    type: "UNFOLLOW",
+    payload
+  };
+}
+
+export { setUserInfo, logoutUser, follow, unfollow };

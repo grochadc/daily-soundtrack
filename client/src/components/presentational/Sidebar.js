@@ -20,6 +20,9 @@ function Sidebar(props) {
             <NavItem>
               <Link to="/add">Add Track</Link>
             </NavItem>
+            <NavItem>
+              <Link to="/dashboard">Dashboard</Link>
+            </NavItem>
           </Nav>
         ) : (
           <NavItem href="http://localhost:3030/login">Login</NavItem>
