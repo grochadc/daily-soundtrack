@@ -44,6 +44,7 @@ class AddTrack extends Component {
           ),
           prevTrackdate: res.data[0].date
         });
+        console.log("prevTrackdate: ", res.data[0].date);
       })
       .catch(err => console.error(err));
   }
@@ -138,7 +139,11 @@ class AddTrack extends Component {
           </Media>
         ) : (
           "Please wait " +
-          diffenrenceInHours(new Date(), this.state.prevTrackdate) +
+          (24 -
+            diffenrenceInHours(
+              new Date(),
+              new Date(this.state.prevTrackdate)
+            )) +
           " hours to submit a new track."
         )}
         {showSubmit ? (
