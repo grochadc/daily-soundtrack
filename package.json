@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@reach/router": "^1.0.5",
+    "Q": "^1.0.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
@@ -20,6 +21,7 @@
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-query": "^2.3.0",
+    "spotify-web-api-js": "^0.24.0",
     "superagent": "^3.8.3"
   },
   "scripts": {
@@ -29,7 +31,9 @@
     "test": "mocha tests/"
   },
   "nodemonConfig": {
-    "ignore": ["client/*"]
+    "ignore": [
+      "client/*"
+    ]
   },
   "devDependencies": {
     "chai": "^4.1.2",
