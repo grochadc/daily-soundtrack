@@ -47,15 +47,18 @@ class App extends Component {
         }
       });
     }
-    axios("/token").then(({ data }) => {
-      spotify.setAccessToken(data.access_token);
-      setTimeout(function() {
-        alert("Countdown ended");
-      }, 2000);
-      this.setState({
-        spotifyWrapper: spotify
+
+    function getToken() {
+      axios("/token").then(({ data }) => {
+        spotify.setAccessToken(data.access_token);
+        this.setState({
+          spotifyWrapper: spotify
+        });
+        setTimeout(() => getToken(), data.trueExpiresIn); //When
       });
-    });
+    }
+    getToken = getToken.bind(this);
+    getToken();
   }
   render() {
     return (

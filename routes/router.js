@@ -43,7 +43,7 @@ router.get("/token", (req, res) => {
       console.log("Token hasn't expired");
       res.send({
         ...SPOTIFY_TOKEN,
-        trueExpiresIn: 3600 - (new Date() - SPOTIFY_TOKEN.createdAt) / 1000
+        trueExpiresIn: 3.6e6 - (new Date() - SPOTIFY_TOKEN.createdAt)
       });
     }
   } else {
