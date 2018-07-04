@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Player from "./components/Player";
 import { Home, FollowersTracks } from "./components/Pages";
-import Wrapper from "./components/Wrapper";
 import UserTracks from "./components/containers/UserTracks";
 import AddTrack from "./components/containers/AddTrack";
 import AuthSuccess from "./components/containers/AuthSucces";
@@ -50,6 +49,9 @@ class App extends Component {
     }
     axios("/token").then(({ data }) => {
       spotify.setAccessToken(data.access_token);
+      setTimeout(function() {
+        alert("Countdown ended");
+      }, 2000);
       this.setState({
         spotifyWrapper: spotify
       });
@@ -79,7 +81,6 @@ class App extends Component {
               <Profile path="/profile" />
               <UserTracks path="/playlist/:user" />
               <Logout path="/logout" />
-              <Wrapper spotify={this.state.spotifyWrapper} path="/wrapper" />
               <NotFound default />
             </Router>
           </Col>
