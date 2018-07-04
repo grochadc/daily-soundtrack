@@ -7,6 +7,7 @@ import TrackMessage from "../TrackMessage";
 import axios from "axios";
 import diffenrenceInHours from "date-fns/difference_in_hours";
 import "../../index.css";
+import spotify from "../../lib/SpotifyWrapper";
 
 class AddTrack extends Component {
   constructor() {
@@ -83,23 +84,11 @@ class AddTrack extends Component {
   }
 
   handleShow() {
+    let { spotify } = this.props;
     let that = this;
     let uri = this.state.uri;
-    async function getToken() {
-      let response = await axios.get("/token");
-      let token = response.data.access_token;
-      let trackAPI = await axios({
-        method: "GET",
-        url:
-          "https://api.spotify.com/v1/tracks/" +
-          uri.substr(uri.lastIndexOf(":") + 1), //Strip the id from URI by finding the last :
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token
-        }
-      });
-      let track = trackAPI.data;
+
+    spotify.getTrack(uri).then(track => {
       let art = track.album.images[1].url;
       let artist = track.artists[0].name;
       let title = track.name;
@@ -112,8 +101,7 @@ class AddTrack extends Component {
         album,
         showSubmit: true
       });
-    }
-    getToken();
+    });
   }
 
   render() {
