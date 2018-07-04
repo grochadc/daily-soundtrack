@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Player from "./components/Player";
 import { Home, FollowersTracks } from "./components/Pages";
+import Wrapper from "./components/Wrapper";
 import UserTracks from "./components/containers/UserTracks";
 import AddTrack from "./components/containers/AddTrack";
 import AuthSuccess from "./components/containers/AuthSucces";
@@ -12,6 +13,7 @@ import { Router } from "@reach/router";
 import { Grid, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { verify } from "jsonwebtoken";
+import spotify from "./lib/SpotifyWrapper";
 import "./index.css";
 
 class App extends Component {
@@ -19,7 +21,9 @@ class App extends Component {
     super();
     this.state = {
       tokens: null,
-      user: null
+      user: null,
+      access_token: null,
+      spotifyWrapper: null
     };
   }
 
@@ -44,6 +48,12 @@ class App extends Component {
         }
       });
     }
+    axios("/token").then(({ data }) => {
+      spotify.setAccessToken(data.access_token);
+      this.setState({
+        spotifyWrapper: spotify
+      });
+    });
   }
   render() {
     return (
@@ -64,11 +74,12 @@ class App extends Component {
                 following={this.props.userFollowing}
               />
               <Player path="/player/:id" />
-              <AddTrack path="/add" />
+              <AddTrack spotify={this.state.spotifyWrapper} path="/add" />
               <AuthSuccess path="/success/:userdocument" />
               <Profile path="/profile" />
               <UserTracks path="/playlist/:user" />
               <Logout path="/logout" />
+              <Wrapper spotify={this.state.spotifyWrapper} path="/wrapper" />
               <NotFound default />
             </Router>
           </Col>
