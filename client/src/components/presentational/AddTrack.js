@@ -19,6 +19,7 @@ class AddTrack extends Component {
       art: "",
       user: "",
       message: "",
+      foundTrack: null,
       showSubmit: false,
       canAddTrack: true,
       prevTrackdate: ""
@@ -94,6 +95,7 @@ class AddTrack extends Component {
       let album = track.album.name;
 
       that.setState({
+        foundTrack: track,
         art,
         artist,
         title,
@@ -105,7 +107,7 @@ class AddTrack extends Component {
 
   render() {
     //Pick all the state items i'll use and rest the mediaInfo to use into track component
-    let { uri, message, canAddTrack, showSubmit, ...mediaInfo } = this.state;
+    let { uri, message, canAddTrack, showSubmit } = this.state;
     return (
       <div>
         {canAddTrack ? (
@@ -124,7 +126,7 @@ class AddTrack extends Component {
         )}
         {showSubmit && (
           <TrackInfoAndMessage
-            mediaInfo={mediaInfo}
+            track={this.state.foundTrack}
             message={message}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
@@ -139,7 +141,7 @@ function TrackInfoAndMessage(props) {
   return (
     <div>
       <h4>Did you mean this track?</h4>
-      <TrackInfo {...props.mediaInfo} />
+      <TrackInfo {...props.track} />
       <TrackMessage
         value={props.message}
         name="message"

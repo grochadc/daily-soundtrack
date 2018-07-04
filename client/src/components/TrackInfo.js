@@ -2,7 +2,11 @@ import React from "react";
 import { Media, Panel } from "react-bootstrap";
 
 export default function TrackInfo(props) {
-  let { title, artist, album, art } = props;
+  let { name, artists, album } = props;
+  let title = name;
+  let artist = artists[0].name;
+  let art = album.images[1].url;
+
   return (
     <Panel>
       <Media>
@@ -17,7 +21,7 @@ export default function TrackInfo(props) {
             <strong>Artist:</strong> {artist}
           </p>
           <p>
-            <strong>Album:</strong> {album}
+            <strong>Album:</strong> {album.name}
           </p>
         </Media.Body>
       </Media>
