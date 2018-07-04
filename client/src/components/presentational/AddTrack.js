@@ -7,7 +7,6 @@ import TrackMessage from "../TrackMessage";
 import axios from "axios";
 import diffenrenceInHours from "date-fns/difference_in_hours";
 import "../../index.css";
-import spotify from "../../lib/SpotifyWrapper";
 
 class AddTrack extends Component {
   constructor() {
