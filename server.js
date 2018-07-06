@@ -12,7 +12,11 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.resolve(__dirname, "client/build/")));
 
-mongoose.connect("mongodb://localhost/test");
+mongoose.connect(
+  process.env.NODE_ENV === "production"
+    ? process.env.DB_URL
+    : "mongodb://localhost/test"
+);
 
 const trackSchema = require("./schemas/track");
 const trackModel = mongoose.model("Track", trackSchema);
