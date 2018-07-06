@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import AuthSucces from "../presentational/AddTrack";
+import Search from "../presentational/Search";
 import diffenrenceInHours from "date-fns/difference_in_hours";
 
 const mapStateToProps = state => {
@@ -12,6 +12,6 @@ const mapStateToProps = state => {
   };
 };
 
-const ConnectedAuthSucces = connect(mapStateToProps)(AuthSucces);
+const ConnectedSearch = connect(mapStateToProps)(Search);
 
-export default ConnectedAuthSucces;
+export default ConnectedSearch;

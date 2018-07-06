@@ -1,4 +1,5 @@
 const initialState = {
+  lastTrack: null,
   user: null,
   spotify_info: {
     id: null
@@ -11,6 +12,11 @@ function reducer(state = initialState, action) {
     case "LOGOUT_USER":
       return {
         user: null
+      };
+    case "SET_LAST_TRACK_FINAL":
+      return {
+        lastTrackDate: action.payload,
+        ...state
       };
     case "SET_SPOTIFY_INFO":
       return {

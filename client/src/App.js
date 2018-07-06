@@ -7,7 +7,7 @@ import AuthSuccess from "./components/containers/AuthSucces";
 import Profile from "./components/containers/Profile";
 import Sidebar from "./components/containers/Sidebar";
 import Logout from "./components/containers/Logout.js";
-import Search from "./components/Search.js";
+import Search from "./components/containers/Search.js";
 import { NotFound } from "./components/Utils.js";
 import { Router } from "@reach/router";
 import { Grid, Row, Col } from "react-bootstrap";
@@ -45,6 +45,7 @@ class App extends Component {
           localStorage.removeItem("daily-soundtrack");
         } else {
           this.props.setSpotifyInfo(data[0]);
+          this.props.setLastTrackDate(data[0].spotify_info.id);
         }
       });
     }
@@ -58,6 +59,7 @@ class App extends Component {
         setTimeout(() => getToken(), data.trueExpiresIn); //When
       });
     }
+    // eslint-disable-next-line
     getToken = getToken.bind(this);
     getToken();
   }
@@ -81,6 +83,10 @@ class App extends Component {
               />
               <Player path="/player/:id" />
               <AddTrack spotify={this.state.spotifyWrapper} path="/add" />
+              <AddTrack
+                spotify={this.state.spotifyWrapper}
+                path="/add/:trackUri"
+              />
               <Search spotify={this.state.spotifyWrapper} path="/search" />
               <AuthSuccess path="/success/:userdocument" />
               <Profile path="/profile" />

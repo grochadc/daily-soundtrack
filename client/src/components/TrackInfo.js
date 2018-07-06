@@ -6,9 +6,10 @@ export default function TrackInfo(props) {
   let title = name;
   let artist = artists[0].name;
   let art = album.images[1].url;
+  let { sendUri, ...completeTrack } = props;
 
   return (
-    <Panel>
+    <Panel onClick={() => sendUri(completeTrack)} style={{ cursor: "pointer" }}>
       <Media>
         <Media.Left>
           <img alt={"Album Art"} src={art} height="100" width="100" />

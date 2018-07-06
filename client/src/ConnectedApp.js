@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import App from "./App.js";
-import { setUserInfo, follow } from "./redux/actions";
+import { setUserInfo, follow, setLastTrackDate } from "./redux/actions";
 
 const mapStateToProps = state => {
   return {
@@ -15,6 +15,9 @@ const mapDispatchToProps = dispatch => {
     },
     follow: user => {
       dispatch(follow(user));
+    },
+    setLastTrackDate: id => {
+      dispatch(setLastTrackDate(id));
     }
   };
 };

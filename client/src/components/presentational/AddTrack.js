@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Media } from "react-bootstrap";
 import { navigate } from "@reach/router";
 import { objectToURL } from "../../lib/utils";
-import TrackInfo from "../TrackInfo";
-import TrackMessage from "../TrackMessage";
+import TrackInfoAndMessage from "../TrackInfoAndMessage";
 import axios from "axios";
 import diffenrenceInHours from "date-fns/difference_in_hours";
 import "../../index.css";
@@ -84,6 +83,7 @@ class AddTrack extends Component {
   }
 
   handleShow() {
+    console.log(this.props.trackUri);
     let { spotify } = this.props;
     let that = this;
     let uri = this.state.uri;
@@ -107,10 +107,10 @@ class AddTrack extends Component {
 
   render() {
     //Pick all the state items i'll use and rest the mediaInfo to use into track component
-    let { uri, message, canAddTrack, showSubmit } = this.state;
+    let { message, showSubmit } = this.state;
     return (
       <div>
-        {canAddTrack ? (
+        {this.props.canAddTrack ? (
           <URIForm
             handleChange={this.handleChange}
             handleShow={this.handleShow}
@@ -135,21 +135,6 @@ class AddTrack extends Component {
       </div>
     );
   }
-}
-
-function TrackInfoAndMessage(props) {
-  return (
-    <div>
-      <h4>Did you mean this track?</h4>
-      <TrackInfo {...props.track} />
-      <TrackMessage
-        value={props.message}
-        name="message"
-        onChange={props.handleChange}
-      />
-      <button onClick={props.handleSubmit}>Submit</button>
-    </div>
-  );
 }
 
 function URIForm(props) {

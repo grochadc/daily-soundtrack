@@ -5,6 +5,13 @@ function setUserInfo(payload) {
   };
 }
 
+function setLastTrackDate(payload) {
+  return {
+    type: "SET_LAST_TRACK",
+    payload
+  };
+}
+
 function logoutUser() {
   return {
     type: "LOGOUT_USER"
@@ -25,4 +32,4 @@ function unfollow(payload) {
   };
 }
 
-export { setUserInfo, logoutUser, follow, unfollow };
+export { setUserInfo, logoutUser, follow, unfollow, setLastTrackDate };
