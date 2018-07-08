@@ -10,7 +10,10 @@ const trackSchema = new Schema({
   },
   uri: String,
   date: Date,
-  user: String,
+  user: {
+    id: String,
+    name: String
+  },
   message: String
 });
 

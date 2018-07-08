@@ -24,7 +24,7 @@ function TrackLink(props) {
         </Link>
       </Panel.Body>
       <Panel.Footer>
-        Posted by: <Link to={"/playlist/" + props.user}>{props.user}</Link>{" "}
+        Posted by: <Link to={"/playlist/" + props.user}>{props.user.name}</Link>{" "}
         <div className="small">
           {distanceInWordsToNow(new Date(props.date))} ago
         </div>
