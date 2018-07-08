@@ -7,7 +7,9 @@ const getLastTrack = store => next => action => {
         action.payload
       )}&sort={"date":-1}&limit=1`
     ).then(({ data }) => {
-      store.dispatch({ type: "SET_LAST_TRACK_FINAL", payload: data[0].date });
+      if (data.length) {
+        store.dispatch({ type: "SET_LAST_TRACK_FINAL", payload: data[0].date });
+      }
     });
   }
   return next(action);
