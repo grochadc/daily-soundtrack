@@ -4,7 +4,7 @@ import diffenrenceInHours from "date-fns/difference_in_hours";
 
 const mapStateToProps = state => {
   return {
-    user: state.spotify_info.id,
+    user: { id: state.spotify_info.id, name: state.spotify_info.display_name },
     lastTrackDate: state.lastTrackDate,
     canAddTrack: Boolean(
       diffenrenceInHours(new Date(), state.lastTrackDate) > 24

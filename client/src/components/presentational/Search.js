@@ -49,6 +49,7 @@ class Search extends Component {
     this.setState({ message: value });
   }
   handleSubmit() {
+    console.log("Submitting track");
     let { name, artists, album, uri } = this.state.selectedTrack;
     let title = name;
     let artist = artists[0].name;
