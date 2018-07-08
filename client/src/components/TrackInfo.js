@@ -2,7 +2,7 @@ import React from "react";
 import { Media, Panel } from "react-bootstrap";
 
 export default function TrackInfo(props) {
-  let { name, artists, album } = props;
+  let { name, artists, album } = props.track;
   let title = name;
   let artist = artists[0].name;
   let art = album.images[1].url;

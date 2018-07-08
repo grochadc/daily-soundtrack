@@ -94,7 +94,11 @@ class Search extends Component {
               }
             })
             .map(track => (
-              <TrackInfo {...track} sendUri={this.handleUri} key={track.uri} />
+              <TrackInfo
+                track={track}
+                sendUri={this.handleUri}
+                key={track.uri}
+              />
             ))}
         {this.state.selectedTrack && (
           <div>
