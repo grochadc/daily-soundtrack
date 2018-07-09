@@ -3,7 +3,8 @@ import Sidebar from "../presentational/Sidebar";
 
 const mapStateToProps = state => {
   return {
-    user_info: state.spotify_info
+    user_info: state.spotify_info,
+    loggedIn: state.loggedIn
   };
 };
 

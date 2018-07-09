@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 
 function Sidebar(props) {
-  let loggedIn = props.user_info != null;
+  let { loggedIn } = props;
   return (
     <Navbar fixedTop>
       <Navbar.Header>
