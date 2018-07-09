@@ -15,12 +15,13 @@ function reducer(state = initialState, action) {
       };
     case "SET_LAST_TRACK_FINAL":
       return {
-        lastTrackDate: action.payload,
-        ...state
+        ...state,
+        lastTrackDate: action.payload
       };
     case "SET_SPOTIFY_INFO":
       return {
         ...state,
+        loggedIn: true,
         ...action.payload
       };
     case "FOLLOW":
