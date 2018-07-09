@@ -96,7 +96,7 @@ router.get("/callback", (req, res) => {
   let success_url =
     process.env.NODE_ENV == "development"
       ? "http://localhost:3000/success/"
-      : "http://localhost:3030/success/";
+      : "https://daily-soundtrack.herokuapp.com/success/";
   request
     .post("https://accounts.spotify.com/api/token")
     .send(data)
