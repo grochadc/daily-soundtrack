@@ -10,7 +10,6 @@ const restify = require("express-restify-mongoose");
 
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(express.static(path.resolve(__dirname, "client/build/")));
 
 mongoose.connect(
   process.env.NODE_ENV === "production"
@@ -26,11 +25,13 @@ const userSchema = require("./schemas/User");
 const userModel = mongoose.model("User", userSchema);
 restify.serve(router, userModel);
 
-router.get("*", (req, res) => {
+app.use(router);
+
+app.use(express.static(path.resolve(__dirname, "client/build/")));
+
+app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
-
-app.use(router);
 
 let port = process.env.PORT || 3030;
 app.listen(port, function() {
