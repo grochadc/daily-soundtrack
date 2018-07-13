@@ -25,7 +25,7 @@ function Sidebar(props) {
             </NavItem>
           </Nav>
         ) : (
-          <NavItem href="http://localhost:3030/login">Login</NavItem>
+          <NavItem href="/login">Login</NavItem>
         )}
       </Nav>
       {loggedIn && (
