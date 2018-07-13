@@ -148,18 +148,6 @@ router.get("/callback", (req, res) => {
 
 const userModel = mongoose.model("User", userSchema);
 
-/*
-body:
-
-{
-'folow': 'usernameToFollow',
-'currentUser': {
-  '_id': '5b2ec0a0f1f7c723dd01fb52'
-  (OR)
-  'username': 'currentUserName'
-  }
-}
-*/
 router.post("/follow", (req, res) => {
   console.log("Posting to /follow endpoint");
   let query;
