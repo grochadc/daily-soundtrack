@@ -70,7 +70,10 @@ router.get("/token", (req, res) => {
   }
 });
 
-const redirect_uri = "http://localhost:3030/callback";
+const redirect_uri =
+  process.env.NODE_ENV === "production"
+    ? "http://daily-soundtrack.herokuapp.com"
+    : "http://localhost:3030/callback";
 const client_id = process.env.CLIENT_ID;
 
 router.get("/login", (req, res) => {
