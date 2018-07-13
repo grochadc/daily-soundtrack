@@ -27,11 +27,16 @@ restify.serve(router, userModel);
 
 app.use(router);
 
-app.use(express.static(path.resolve(__dirname, "client/build/")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
+if (process.env.NODE_ENV === "production") {
+  console.log("Serving production files");
+  app.get("/hello", (req, res) => {
+    res.send("World");
+  });
+  app.use(express.static(path.resolve(__dirname, "client/build/")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 let port = process.env.PORT || 3030;
 app.listen(port, function() {
