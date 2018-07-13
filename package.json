@@ -17,15 +17,14 @@
     "superagent": "^3.8.3"
   },
   "scripts": {
-    "start": "NODE_ENV=development nodemon server.js",
-    "prod": "NODE_ENV=production nodemon server.js",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development nodemon server.js",
     "client": "cd client/ && npm start",
+    "heroku-postbuild": "cd client/ && npm run build",
     "test": "mocha tests/"
   },
   "nodemonConfig": {
-    "ignore": [
-      "client/*"
-    ]
+    "ignore": ["client/*"]
   },
   "devDependencies": {
     "chai": "^4.1.2",
